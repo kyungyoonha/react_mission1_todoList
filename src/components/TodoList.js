@@ -4,8 +4,9 @@ import "./TodoList.css";
 // Icons
 import IconCheckFalse from "@material-ui/icons/IndeterminateCheckBoxOutlined";
 import IconCheckTrue from "@material-ui/icons/CheckBoxOutlined";
+import IconDelete from "@material-ui/icons/DeleteOutlined";
 
-function TodoList({ todo, updateNewTodo }) {
+function TodoList({ todo, updateNewTodo, deleteTodo }) {
     console.log("Todolist");
     const [input, setInput] = useState(todo.text);
     const [show, setShow] = useState(false);
@@ -24,12 +25,18 @@ function TodoList({ todo, updateNewTodo }) {
     const handleShowInput = () => {
         setShow(true);
     };
+
     const handleSave = () => {
         updateNewTodo({
             ...todo,
             text: input,
         });
         setShow(false);
+    };
+
+    const handleDelete = () => {
+        console.log(todo.id);
+        deleteTodo(todo.id);
     };
 
     return (
@@ -45,6 +52,7 @@ function TodoList({ todo, updateNewTodo }) {
                         {input}
                     </h3>
                     <button onClick={handleShowInput}>수정</button>
+                    <IconDelete onClick={handleDelete} />
                 </div>
             )}
 

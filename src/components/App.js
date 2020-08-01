@@ -49,6 +49,10 @@ function App() {
         );
     }, []);
 
+    const deleteTodo = useCallback((id) => {
+        setTodos((state) => state.filter((todo) => todo.id !== id));
+    }, []);
+
     return (
         <div className="app">
             <div className="app__container">
@@ -66,6 +70,7 @@ function App() {
                                 key={todo.id}
                                 todo={todo}
                                 updateNewTodo={updateNewTodo}
+                                deleteTodo={deleteTodo}
                             />
                         ))}
                 </div>
