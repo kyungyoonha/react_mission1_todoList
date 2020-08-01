@@ -3,7 +3,7 @@
 }
 
 .app {
-    background-color: white;
+    background-color: #e8e9f0;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -14,15 +14,15 @@
     /* background-image: url("./images/bg3.png");
     background-position: center;
     background-size: cover; */
+    background-color: white;
     width: 450px;
-    height: 600px;
-    border-radius: 0%;
-    /* overflow-y: scroll; */
-
+    min-height: 600px;
+    border-radius: 1.5%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-
-    border: 1px solid red;
+    border: 1px solid #c1c1c1;
+    font-size: 0.9rem;
 }
 
 .app__title {
@@ -36,5 +36,5 @@
 }
 
 .app__list {
-    overflow-y: scroll;
+    margin: 20px;
 }

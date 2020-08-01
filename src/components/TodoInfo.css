@@ -4,9 +4,12 @@
 
 .todoInfo__progress {
     background-color: #d8ecf8;
-    height: 20px;
-
-    margin: 5px;
+    height: 30px;
     padding: 20px;
     border-radius: 4%;
+    text-align: center;
+}
+
+.todoInfo__text {
+    margin-top: 10px;
 }

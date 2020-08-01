@@ -15,6 +15,7 @@ function TodoInput({ insertNewTodo }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         insertNewTodo(todo);
+        setTodo("");
     };
     return (
         <form className="todoInput" onSubmit={handleSubmit}>
