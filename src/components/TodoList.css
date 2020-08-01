@@ -1,0 +1,15 @@
+.todoList {
+    /* border: 1px solid blue; */
+    color: red;
+    display: flex;
+    margin: 5px;
+    padding: 0 20px;
+}
+
+.todoList__check {
+    display: flex;
+}
+
+.todoList__check-true {
+    color: blue;
+}

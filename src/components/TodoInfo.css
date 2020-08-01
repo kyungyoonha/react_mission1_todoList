@@ -1,0 +1,12 @@
+.todoInfo {
+    padding: 0 20px;
+}
+
+.todoInfo__progress {
+    background-color: #d8ecf8;
+    height: 20px;
+
+    margin: 5px;
+    padding: 20px;
+    border-radius: 4%;
+}

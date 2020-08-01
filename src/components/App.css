@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+}
+
+.app {
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app__container {
+    /* background-image: url("./images/bg3.png");
+    background-position: center;
+    background-size: cover; */
+    width: 450px;
+    height: 600px;
+    border-radius: 0%;
+    /* overflow-y: scroll; */
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid red;
+}
+
+.app__title {
+    background-color: #20232a;
+    height: 120px;
+    color: #61dafb;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.app__list {
+    overflow-y: scroll;
+}
