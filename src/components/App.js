@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./Header";
 import TodoInsert from "./TodoInsert";
 import TodoList from "./TodoList";
-import TodoInfo from "./TodoInfo";
+import TodoProgress from "./TodoProgress";
 import { constantTodos } from "../constants";
 
 function App() {
@@ -44,7 +44,7 @@ function App() {
             <div className="app__container">
                 <Header />
                 <TodoInsert onEdit={onEdit} todoEdit={todoEdit} />
-                <TodoInfo todos={todos} />
+                <TodoProgress todos={todos} />
                 <div className="app__content">
                     {todos.map((todo) => (
                         <TodoList

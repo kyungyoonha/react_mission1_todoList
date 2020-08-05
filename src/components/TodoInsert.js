@@ -6,11 +6,17 @@ import TextField from "@material-ui/core/TextField";
 
 function TodoInsert({ onEdit, todoEdit }) {
     const [todo, setTodo] = useState({});
+    // 주의사항
+    // useState() default value not working
+    // useState()로 default 값 넘겨줘도 처음 한번 외에는 반영되지 않는다.
+    // useEffect()를 써서 변경해줘야한다.
+    // 참고 => https://medium.com/@digruby/do-not-use-props-as-default-value-of-react-usestate-directly-818ee192f454
 
     useEffect(() => {
         setTodo(todoEdit);
     }, [todoEdit]);
 
+    // Input Value
     const handleChange = useCallback((e) => {
         const value = e.target.value;
         setTodo((state) => ({
@@ -19,7 +25,8 @@ function TodoInsert({ onEdit, todoEdit }) {
         }));
     }, []);
 
-    const handleSubmit = useCallback(
+    // Edit
+    const handleEdit = useCallback(
         (e) => {
             e.preventDefault();
             onEdit(todo);
@@ -27,7 +34,7 @@ function TodoInsert({ onEdit, todoEdit }) {
         [onEdit, todo]
     );
     return (
-        <form className="todoInsert" onSubmit={handleSubmit}>
+        <form className="todoInsert" onSubmit={handleEdit}>
             <TextField
                 className="todoInsert__input"
                 label="할일 입력"

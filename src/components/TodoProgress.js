@@ -1,7 +1,8 @@
 import React from "react";
 import ProgressBar from "../util/ProgressBar";
 
-function TodoInfo({ todos }) {
+function TodoProgress({ todos }) {
+    console.log("todoProgress");
     const totalCount = todos.length;
     const doneCount = todos.filter((todo) => todo.isDone === true).length || 0;
     const percent = Math.round((doneCount / totalCount) * 100);
@@ -18,4 +19,4 @@ function TodoInfo({ todos }) {
     );
 }
 
-export default React.memo(TodoInfo);
+export default React.memo(TodoProgress);

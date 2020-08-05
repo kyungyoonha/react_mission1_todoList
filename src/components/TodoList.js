@@ -14,6 +14,7 @@ function TodoList({ todo, onToggle, onEdit, onDelete }) {
         });
     };
 
+    // todo값을 TodoInsert 컴포넌트에 전달
     const handleToggle = () => {
         onToggle(todo);
     };
@@ -32,6 +33,8 @@ function TodoList({ todo, onToggle, onEdit, onDelete }) {
                 {todo.isDone ? <IconCheckTrue /> : <IconCheckFalse />}
                 <h3 className="todoList__text">{todo.value}</h3>
             </div>
+
+            {/* 수정 & 삭제 버튼 */}
             <div className="todoList__buttons">
                 <IconEdit onClick={handleToggle} />
                 <IconDelete onClick={handleDelete} />
