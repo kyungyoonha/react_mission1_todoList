@@ -1,26 +1,5 @@
 import React from "react";
-import "./TodoInfo.css";
-
-// MUI
-import { withStyles } from "@material-ui/core/styles";
-
-// icons
-import LinearProgress from "@material-ui/core/LinearProgress";
-
-const BorderLinearProgress = withStyles((theme) => ({
-    root: {
-        height: 10,
-        borderRadius: 5,
-    },
-    colorPrimary: {
-        backgroundColor:
-            theme.palette.grey[theme.palette.type === "light" ? 200 : 700],
-    },
-    bar: {
-        borderRadius: 5,
-        backgroundColor: "#1a90ff",
-    },
-}))(LinearProgress);
+import ProgressBar from "../util/ProgressBar";
 
 function TodoInfo({ todos }) {
     const totalCount = todos.length;
@@ -29,9 +8,8 @@ function TodoInfo({ todos }) {
 
     return (
         <div className="todoInfo">
-            {/* 진행도 */}
             <div className="todoInfo__progress">
-                <BorderLinearProgress variant="determinate" value={percent} />
+                <ProgressBar variant="determinate" value={percent} />
                 <h3 className="todoInfo__text">
                     {totalCount ? percent + " %" : "일정을 추가해주세요."}
                 </h3>
@@ -40,4 +18,4 @@ function TodoInfo({ todos }) {
     );
 }
 
-export default TodoInfo;
+export default React.memo(TodoInfo);

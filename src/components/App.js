@@ -1,78 +1,60 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import "./App.css";
-import TodoInput from "./TodoInput";
+import Header from "./Header";
+import TodoInsert from "./TodoInsert";
 import TodoList from "./TodoList";
 import TodoInfo from "./TodoInfo";
-
-const defualtTodos = [
-    {
-        id: 1,
-        text: "Todo List Application 만들기",
-        isDone: true,
-    },
-    {
-        id: 2,
-        text: "알고리즘 공부",
-        isDone: false,
-    },
-    {
-        id: 3,
-        text: "기술면접",
-        isDone: false,
-    },
-];
+import { constantTodos } from "../constants";
 
 function App() {
-    const [todos, setTodos] = useState([]);
-    const nextId = useRef(defualtTodos.length + 1);
+    const [todos, setTodos] = useState(constantTodos);
+    const [todoEdit, setTodoEdit] = useState({});
+    const nextId = useRef(constantTodos.length + 1);
 
-    useEffect(() => {
-        setTodos(defualtTodos);
+    // UPDATE
+    const onEdit = useCallback((newTodo) => {
+        if (!newTodo.id) {
+            setTodos((state) => [
+                ...state,
+                {
+                    id: nextId.current,
+                    value: newTodo.value,
+                    isDone: false,
+                },
+            ]);
+            nextId.current += 1;
+        } else {
+            setTodos((state) =>
+                state.map((todo) => (todo.id === newTodo.id ? newTodo : todo))
+            );
+        }
+        setTodoEdit({});
     }, []);
 
-    const insertNewTodo = useCallback((todo) => {
-        setTodos((state) => [
-            ...state,
-            {
-                id: nextId.current,
-                text: todo,
-                isDone: false,
-            },
-        ]);
-
-        nextId.current += 1;
-    }, []);
-
-    const updateNewTodo = useCallback((newTodo) => {
-        setTodos((state) =>
-            state.map((todo) => (todo.id === newTodo.id ? newTodo : todo))
-        );
-    }, []);
-
-    const deleteTodo = useCallback((id) => {
+    // DELETE
+    const onDelete = useCallback((id) => {
         setTodos((state) => state.filter((todo) => todo.id !== id));
     }, []);
 
+    const onToggle = useCallback((todo) => {
+        setTodoEdit(todo);
+    }, []);
     return (
         <div className="app">
             <div className="app__container">
-                <div className="app__title">
-                    <h1>React</h1>
-                    <h2 style={{ color: "#ffffff" }}>Todo 리스트 만들기</h2>
-                </div>
-
-                <TodoInput insertNewTodo={insertNewTodo} />
+                <Header />
+                <TodoInsert onEdit={onEdit} todoEdit={todoEdit} />
                 <TodoInfo todos={todos} />
-                <div className="app__list">
-                    {todos &&
-                        todos.map((todo) => (
-                            <TodoList
-                                key={todo.id}
-                                todo={todo}
-                                updateNewTodo={updateNewTodo}
-                                deleteTodo={deleteTodo}
-                            />
-                        ))}
+                <div className="app__content">
+                    {todos.map((todo) => (
+                        <TodoList
+                            key={todo.id}
+                            todo={todo}
+                            onEdit={onEdit}
+                            onDelete={onDelete}
+                            onToggle={onToggle}
+                        />
+                    ))}
                 </div>
             </div>
         </div>

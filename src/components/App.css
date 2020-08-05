@@ -1,40 +1,21 @@
-* {
-    margin: 0;
-}
+* { padding: 0; margin: 0; text-decoration: 'none'; list-style: 'none'; }
+.app {  display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #e8e9f0; }
+.app__container { overflow: hidden; display: flex; flex-direction: column; width: 450px; min-height: 600px; background-color: white; border: 1px solid #c1c1c1; border-radius: 1.5%; font-size: 0.9rem; }
+.app__content { margin: 20px; }
 
-.app {
-    background-color: #e8e9f0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.header { display: flex; flex-direction: column; justify-content: center; height: 120px; text-align: center; background-color: #20232a; }
+.header__title { color: #61dafb; }
+.header__subTitle { color: #ffffff; }
 
-.app__container {
-    /* background-image: url("./images/bg3.png");
-    background-position: center;
-    background-size: cover; */
-    background-color: white;
-    width: 450px;
-    min-height: 600px;
-    border-radius: 1.5%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #c1c1c1;
-    font-size: 0.9rem;
-}
+.todoInfo { padding: 0 20px; margin-bottom: 10px; }
+.todoInfo__progress { padding: 20px; height: 30px; background-color: #d8ecf8; border-radius: 4%; text-align: center; }
+.todoInfo__text { margin-top: 10px; }
 
-.app__title {
-    background-color: #20232a;
-    height: 120px;
-    color: #61dafb;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+.todoInsert { padding: 20px; }
+.todoInsert__input, .todoInsert__button { width: 100%; }
 
-.app__list {
-    margin: 20px;
-}
+.todoList { display: flex; justify-content: space-between; align-items: center; height: 60px; border-bottom: 1px solid #9b9b9b; border-radius: 3%; }
+.todoList__checkbox { flex: 1; display: flex; align-items: center; height: 100%; cursor: pointer; }
+.todoList__checkboxTrue { color: #9b9b9b; }
+.todoList__text { flex: 1; margin-left: 10px; white-space: normal; }
+.todoList__buttons { cursor: pointer; }
