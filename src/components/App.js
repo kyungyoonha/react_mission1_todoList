@@ -12,6 +12,8 @@ function App() {
     const nextId = useRef(constantTodos.length + 1);
 
     // UPDATE
+    // id값 있으면 업데이트
+    // id값 없으면 데이터 추가
     const onEdit = useCallback((newTodo) => {
         if (!newTodo.id) {
             setTodos((state) => [
@@ -36,9 +38,11 @@ function App() {
         setTodos((state) => state.filter((todo) => todo.id !== id));
     }, []);
 
+    // 데이터 수정 버튼 클릭시 TodoInsert로 데이터 넘겨준다.
     const onToggle = useCallback((todo) => {
         setTodoEdit(todo);
     }, []);
+
     return (
         <div className="app">
             <div className="app__container">
